@@ -14,14 +14,12 @@ export const NoteCard = () => {
 
     }, [notes])
     return (
-        <div>
-            <div>
-                {
-                    notes.map(({body}, index) => (
-                        <textarea rows="8" cols="30" className=" bg-red-300 resize-none border-2 ro">{body}</textarea>
-                    ))
-                }
-            </div>
+        <div className=" grid grid-cols-3 gap-4 my-8">
+            {
+                notes.map(({ body }, index) => (
+                    <textarea rows="8" cols="30" className=" bg-red-300 resize-none border-2 p-2 rounded-xl">{body}</textarea>
+                ))
+            }
 
         </div>
     )
