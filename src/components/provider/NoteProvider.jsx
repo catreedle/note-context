@@ -17,11 +17,26 @@ export const NoteProvider = ({ children }) => {
         const note = { body: "" };
         newNotes.push(note);
 
-        console.log(newNotes)
         setNotes(newNotes);
-        console.log('neww', notes)
     }
 
-    return <NoteContext.Provider value={{ data, notes, handleSetData, handleAddNote }}>{children}</NoteContext.Provider>
+    function handleDeleteNote(index) {
+        const newNotes = [...notes];
+
+        newNotes.splice(index, 1);
+        setNotes(newNotes)
+
+    }
+
+    function changeContent(index, newContent) {
+        const newNotes = [...notes];
+        const newNote = {
+            body: newContent,
+        }
+
+        newNotes.splice(index, 1, newNote);
+        setNotes(newNotes)
+    }
+    return <NoteContext.Provider value={{ data, notes, handleSetData, handleAddNote, handleDeleteNote, changeContent }}>{children}</NoteContext.Provider>
 
 }
