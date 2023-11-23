@@ -2,7 +2,7 @@
 
 import { useContext } from "react";
 import { Heart, Plus } from "lucide-react"
-import { NoteContext } from "./provider/NoteProvider";
+import { NoteContext } from "../provider/NoteProvider";
 
 export const NoteHeader = () => {
 

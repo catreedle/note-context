@@ -14,7 +14,9 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={inter.className}>
         <NoteProvider>
-          {children}
+          <main className=' max-w-2xl m-auto my-6 space-y-8'>
+            {children}
+          </main>
         </NoteProvider>
       </body>
     </html>

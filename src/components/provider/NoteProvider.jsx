@@ -24,7 +24,7 @@ export const NoteProvider = ({ children }) => {
         const newNotes = [...notes];
 
         newNotes.splice(index, 1);
-        setNotes(newNotes)
+        setNotes(newNotes);
 
     }
 
@@ -35,7 +35,7 @@ export const NoteProvider = ({ children }) => {
         }
 
         newNotes.splice(index, 1, newNote);
-        setNotes(newNotes)
+        setNotes(newNotes);
     }
     return <NoteContext.Provider value={{ data, notes, handleSetData, handleAddNote, handleDeleteNote, changeContent }}>{children}</NoteContext.Provider>
 

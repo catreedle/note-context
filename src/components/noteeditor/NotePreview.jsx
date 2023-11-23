@@ -1,13 +1,19 @@
 "use client"
 
-import { useContext } from "react"
-import { NoteContext } from "../provider/NoteProvider"
+import React, { useContext } from 'react'
+import { NoteCard } from './NoteCard'
+import { NoteContext } from '../provider/NoteProvider'
 
-useContext
 
 export const NotePreview = () => {
- const { data } = useContext(NoteContext)
+
+  const { notes } = useContext(NoteContext);
+  
   return (
-    <div>{data}</div>
+    <div className=" grid grid-cols-2 gap-6">
+      {
+        notes.map(({ body }, index) => <NoteCard key={index} content={body} index={index} />)
+      }
+    </div>
   )
 }
