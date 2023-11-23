@@ -1,6 +1,6 @@
 "use client"
 
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 
 export const NoteContext = createContext();
 
@@ -18,6 +18,7 @@ export const NoteProvider = ({ children }) => {
         newNotes.push(note);
 
         setNotes(newNotes);
+        localStorage.setItem('notes', JSON.stringify(newNotes))
     }
 
     function handleDeleteNote(index) {
@@ -25,6 +26,7 @@ export const NoteProvider = ({ children }) => {
 
         newNotes.splice(index, 1);
         setNotes(newNotes);
+        localStorage.setItem('notes', JSON.stringify(newNotes))
 
     }
 
@@ -36,7 +38,19 @@ export const NoteProvider = ({ children }) => {
 
         newNotes.splice(index, 1, newNote);
         setNotes(newNotes);
+        localStorage.setItem('notes', JSON.stringify(notes))
     }
+
+    useEffect(() => {
+        const localNotes = localStorage.getItem('notes');
+        if (localNotes) {
+            const parseNotes = JSON.parse(localNotes);
+            setNotes(parseNotes);
+        }
+
+
+    }, [])
+
     return <NoteContext.Provider value={{ data, notes, handleSetData, handleAddNote, handleDeleteNote, changeContent }}>{children}</NoteContext.Provider>
 
 }
